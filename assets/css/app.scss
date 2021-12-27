@@ -4,9 +4,25 @@ html, body, #__nuxt, #__layout {
 }
 
 .hero {
-  @apply flex flex-col min-h-full px-6 bg-gradient-to-br from-green-500 to-green-700;
+  @apply flex flex-col h-full px-6 bg-gradient-to-br from-green-500 to-green-700;
 
   main {
     @apply container mx-auto flex-1 flex flex-col justify-center;
+  }
+}
+
+.hero-canvas-wrapper {
+  @apply relative w-full h-full bg-gradient-to-br from-green-500 to-green-700;
+
+  canvas {
+    @apply absolute inset-0 z-0 bg-transparent w-full h-full;
+  }
+
+  .hero-canvas {
+    @apply relative bg-transparent z-10 flex flex-col h-full w-full;
+
+    main {
+      @apply container mx-auto flex-1 flex flex-col justify-center;
+    }
   }
 }
