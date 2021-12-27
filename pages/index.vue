@@ -26,6 +26,7 @@ import { setupCanvas } from '~/plugins/canvasDots';
 
 export default {
   name: 'IndexPage',
+  layout: 'empty',
   methods: {
     createCanvas() {
       setupCanvas(this.$refs.canvasdots);

@@ -2,6 +2,7 @@ const dots = [];
 let canvas = null;
 let ctx = null;
 let start = 0;
+let initalized = false;
 
 const generateDot = () => {
   const dot = {
@@ -22,13 +23,17 @@ const setupCanvas = (cvs) => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  if (initalized) {
+    return;
+  }
+
   // Set a listener for resize events
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   });
 
-  let amount = 120;
+  let amount = 100;
 
   // If is a mobile device, only generate 50 dots
   if (window.innerWidth < 500) {
@@ -44,6 +49,8 @@ const setupCanvas = (cvs) => {
   for (let i = 0; i < amount; i++) {
     generateDot();
   }
+
+  initalized = true;
 
   animate(0);
 }

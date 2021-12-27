@@ -3,16 +3,28 @@ html, body, #__nuxt, #__layout {
   box-sizing: border-box;
 }
 
-.hero {
-  @apply flex flex-col h-full px-6 bg-gradient-to-br from-green-500 to-green-700;
+.wrapper {
+  @apply flex flex-col h-full bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue;
 
   main {
-    @apply container mx-auto flex-1 flex flex-col justify-center;
+    @apply flex-1 flex flex-col;
+
+    .component-wrapper {
+      @apply flex flex-col flex-1;
+
+      .title-section {
+        @apply container mx-auto py-8 flex flex-col;
+
+        h1 {
+          @apply text-white text-4xl font-bold;
+        }
+      }
+    }
   }
 }
 
 .hero-canvas-wrapper {
-  @apply relative w-full h-full bg-gradient-to-br from-green-500 to-green-700;
+  @apply relative w-full h-full bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue;
 
   canvas {
     @apply absolute inset-0 z-0 bg-transparent w-full h-full;
