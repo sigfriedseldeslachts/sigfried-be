@@ -1,6 +1,6 @@
 <template>
   <div class="hero-canvas-wrapper">
-    <canvas id="canvasdots" ref="canvasdots" />
+    <canvas id="canvaslines" ref="cvs" />
     <div class="hero-canvas">
       <Navigation />
 
@@ -22,21 +22,21 @@
 </template>
 
 <script>
-import { setupCanvas } from '~/plugins/canvasDots';
+import { setupCanvas, startAnimation, stopAnimation } from '~/plugins/canvasLines';
 
 export default {
   name: 'IndexPage',
   layout: 'empty',
-  methods: {
-    createCanvas() {
-      setupCanvas(this.$refs.canvasdots);
-    }
+  beforeRouteLeave (to, from, next) {
+    stopAnimation();
+    next();
+  },
+  beforeRouteEnter (to, from, next) {
+    startAnimation();
+    next();
   },
   mounted () {
-    // Ony run on client
-    if (process.client) {
-      this.createCanvas();
-    }
+    setupCanvas(this.$refs.cvs);
   }
 }
 </script>
