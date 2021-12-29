@@ -8,8 +8,9 @@ COPY . /usr/src/nuxt-app/
 RUN yarn && yarn generate
 
 # Actual application
-FROM dragas/thttpd
+FROM nginx:alpine
 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/nuxt-app/dist /var/www/http
 
 EXPOSE 80

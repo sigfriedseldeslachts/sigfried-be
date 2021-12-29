@@ -43,7 +43,7 @@ a {
     @apply relative bg-transparent z-10 flex flex-col h-full w-full;
 
     main {
-      @apply container mx-auto flex-1 flex flex-col justify-center;
+      @apply container mx-2 sm:mx-auto flex-1 flex flex-col justify-center;
     }
   }
 }
