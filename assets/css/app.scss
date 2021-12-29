@@ -3,6 +3,12 @@ html, body, #__nuxt, #__layout {
   box-sizing: border-box;
 }
 
+a {
+  &:focus-visible {
+    @apply ring-4 ring-red-500 outline-none transition-all duration-200 ease-in-out;
+  }
+}
+
 .wrapper {
   @apply flex flex-col h-full bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue;
 
