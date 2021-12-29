@@ -5,14 +5,14 @@
     </div>
 
     <div class="h-full">
-      <section class="container mx-auto">
+      <section class="container mx-auto ">
         <div class="project-list">
           <article v-for="project in projects" :key="project.name" :aria-labelledby="'project-title-' + project.name">
             <a :href="project.images[project.mainImage].src" target="_blank" @click.prevent="showImages(project.images, project.mainImage)" v-if="project.images !== null && project.mainImage !== null && project.mainImage >= 0">
               <img :src="project.imgThumb ? project.imgThumb : project.images[project.mainImage].src" :alt="project.images[project.mainImage].alt">
             </a>
             <div class="flex-1 flex items-center justify-center text-gray-500" v-else>
-              <span>No image available.</span>
+              <span class="py-4 px-2">No image available.</span>
             </div>
 
             <div class="content">
@@ -23,6 +23,13 @@
                 <span><a :href="project.url" ref="noreferrer noopener" v-if="project.url !== null" class="view-button">View project</a></span>
                 <span><a href="#" v-if="Array.isArray(project.images) && project.images.length > 1" @click.prevent="showImages(project.images, project.mainImage)">View all images</a></span>
               </div>
+
+              <span v-if="Array.isArray(project.tags) && project.tags.length > 0" class="tags-wrapper">
+                <span class="sr-only">The following technologies were used:</span>
+                <button type="button" v-for="tag in project.tags" :key="tag" class="tag" @click.prevent="addSelectedTag(tag)">
+                  {{ tag }} <span aria-label="Deselect this tag" v-if="isTagSelected(tag)">&times;</span>
+                </button>
+              </span>
             </div>
           </article>
         </div>
@@ -49,7 +56,8 @@ export default {
     return {
       visible: false,
       imgs: [],
-      index: 0
+      index: 0,
+      selectedTags: [],
     }
   },
   methods: {
@@ -61,10 +69,32 @@ export default {
     handleHide() {
       this.visible = false;
     },
+    addSelectedTag(tag) {
+      if (this.selectedTags.includes(tag)) {
+        this.selectedTags.splice(this.selectedTags.indexOf(tag), 1);
+      } else {
+        this.selectedTags.push(tag);
+      }
+    },
+    isTagSelected (tag) {
+      return this.selectedTags.includes(tag);
+    }
   },
   computed: {
     projects () {
-      return projects;
+      // If no tags are selected, return all projects
+      if (this.selectedTags.length === 0) {
+        return projects;
+      }
+
+      // Otherwise, filter projects by tags
+      return projects.filter((project) => {
+        if (Array.isArray(project.tags)) {
+          return project.tags.some((tag) => this.selectedTags.includes(tag));
+        }
+
+        return false;
+      });
     }
   }
 }
@@ -72,10 +102,10 @@ export default {
 
 <style lang="scss">
 .project-list {
-  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-2 sm:mx-0;
 
   article {
-    @apply flex flex-col justify-end bg-gray-100 text-bg-mid-blue shadow-inner rounded-lg tracking-wide;
+    @apply flex flex-col justify-end bg-gray-100 text-bg-mid-blue shadow-inner rounded-lg tracking-normal;
 
     a {
       @apply flex flex-1 items-center;
@@ -98,7 +128,19 @@ export default {
 
       a {
         &.view-button {
-          @apply px-3 py-2 rounded bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue text-white;
+          @apply px-3 py-2 rounded bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue text-white transition-all ease-in-out;
+
+          &:hover {
+            @apply from-bg-dark-blue via-bg-dark-blue to-bg-dark-blue;
+          }
+        }
+      }
+
+      .tags-wrapper {
+        @apply flex flex-row items-center mt-3 gap-x-1;
+
+        .tag {
+          @apply inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-0 cursor-pointer;
         }
       }
     }

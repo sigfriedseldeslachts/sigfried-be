@@ -1,6 +1,9 @@
+html {
+  @apply h-full bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue;
+}
+
 html, body, #__nuxt, #__layout {
-  height: 100%;
-  box-sizing: border-box;
+  @apply h-full overflow-y-auto overflow-x-hidden;
 }
 
 a {
@@ -10,7 +13,7 @@ a {
 }
 
 .wrapper {
-  @apply flex flex-col h-full bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue;
+  @apply flex flex-col h-full;
 
   main {
     @apply flex-1 flex flex-col;
@@ -19,7 +22,7 @@ a {
       @apply flex flex-col flex-1;
 
       .title-section {
-        @apply container mx-auto py-8 flex flex-col;
+        @apply container mx-2 sm:mx-auto py-8 flex flex-col;
 
         h1 {
           @apply text-white text-4xl font-bold;
@@ -30,7 +33,7 @@ a {
 }
 
 .hero-canvas-wrapper {
-  @apply relative w-full h-full bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue;
+  @apply relative w-full h-full;
 
   canvas {
     @apply absolute inset-0 z-0 bg-transparent w-full h-full;

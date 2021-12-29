@@ -3,6 +3,7 @@ export default [
     name: 'ISW Leuven',
     description: 'For the student association ISW Leuven I made a new website and also a whole authentication system with a marketplace that made it possible for students to list their used books so that other students can buy it instead of a new one.',
     url: 'https://iswleuven.be',
+    tags: ['Web', 'Laravel', 'Vue', 'Nuxt', 'Kubernetes'],
     mainImage: 0,
     imgThumb: require('~/assets/images/portfolio/isw_1_thumb.jpeg'),
     images: [
@@ -21,6 +22,8 @@ export default [
     name: 'VandereL',
     description: 'A website for an independant jeweler and leatherworker located in Belgium.',
     url: 'https://vanderel.be',
+    tags: ['Web', 'CMS'],
+    imgThumb: require('~/assets/images/portfolio/vanderel_thumb.jpeg'),
     mainImage: 0,
     images: [
       {
@@ -33,6 +36,8 @@ export default [
     name: 'Boomverzorging Michiel',
     description: 'This very simple one page website was made for my brother who is a treeworker.',
     url: 'https://boomverzorgingmichiel.be',
+    tags: ['Web', 'Vue', 'Nuxt'],
+    imgThumb: require('~/assets/images/portfolio/boomverzorging_michiel_thumb.jpeg'),
     mainImage: 0,
     images: [
       {
@@ -45,6 +50,8 @@ export default [
     name: 'Echo Communication',
     description: 'For a school project me and 3 other students were asked to create a website for a real company. Everyone had to make their own design, this was my result.',
     url: 'https://echocommunication.sigfried.be',
+    tags: ['Web'],
+    imgThumb: require('~/assets/images/portfolio/echo_communication_thumb.jpeg'),
     mainImage: 0,
     images: [
       {
@@ -56,6 +63,7 @@ export default [
   {
     name: 'AS212767',
     description: 'This is my own personal research network. I have two IPv6 prefixes and advertise them on the internet.',
-    url: 'https://as212767.net'
+    url: 'https://as212767.net',
+    tags: ['Networking', 'BGP'],
   }
 ]

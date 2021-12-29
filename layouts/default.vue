@@ -12,9 +12,6 @@
 
 <script>
 export default {
-  name: 'LayoutsPages',
-  mounted () {
-    console.log('mounted');
-  }
+  name: 'LayoutsPages'
 }
 </script>
