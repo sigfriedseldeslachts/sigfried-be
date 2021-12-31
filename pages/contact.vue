@@ -93,7 +93,7 @@ export default {
 
 <style lang="scss">
 #contactme-section {
-  @apply grid grid-cols-1 md:grid-cols-2 container px-2 sm:mx-auto justify-center items-start gap-8;
+  @apply grid grid-cols-1 md:grid-cols-2 container px-2 sm:mx-auto justify-center items-start;
 
   .contact-info-card {
     @apply px-6 py-4 bg-gray-100 rounded-lg shadow-lg;
@@ -136,7 +136,7 @@ export default {
   }
 
   aside {
-    @apply text-white;
+    @apply text-white pl-0 pt-8 md:pt-0 md:pl-6;
 
     dl {
       dt {
