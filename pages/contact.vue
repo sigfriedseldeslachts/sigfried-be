@@ -141,7 +141,7 @@ export default {
   }
 
   aside {
-    @apply text-white pl-0 pt-8 md:pt-0 md:pl-6;
+    @apply text-white px-3 pt-8 md:pt-0 md:px-0 md:pl-6;
 
     dl {
       dt {
