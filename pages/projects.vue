@@ -1,7 +1,7 @@
 <template>
   <div class="component-wrapper">
     <div class="title-section">
-      <h1>My Projects</h1>
+      <h1>Some of my Projects</h1>
     </div>
 
     <div class="h-full">
@@ -128,16 +128,16 @@ export default {
 
       a {
         &.view-button {
-          @apply px-3 py-2 rounded bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue text-white transition-all ease-in-out;
+          @apply px-3 py-2 rounded bg-accent-primary text-bg-light-blue transition-all ease-in-out duration-300;
 
-          &:hover {
-            @apply from-bg-dark-blue via-bg-dark-blue to-bg-dark-blue;
+          &:hover, &:focus {
+            @apply text-white bg-bg-light-blue;
           }
         }
       }
 
       .tags-wrapper {
-        @apply flex flex-row items-center mt-3 gap-x-1;
+        @apply flex flex-row overflow-x-auto items-center mt-3 gap-x-1;
 
         .tag {
           @apply inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-0 cursor-pointer;
