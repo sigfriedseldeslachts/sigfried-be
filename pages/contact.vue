@@ -75,6 +75,11 @@ import { faGithub, faTelegram, faLinkedin, faKeybase, faGitlab, faDiscord } from
 
 export default {
   name: 'ContactPage',
+  head () {
+    return {
+      title: 'Contact | Sigfried Seldeslachts',
+    }
+  },
   computed: {
     icons() {
       return {

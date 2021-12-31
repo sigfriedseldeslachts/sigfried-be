@@ -60,6 +60,11 @@ export default {
       selectedTags: [],
     }
   },
+  head () {
+    return {
+      title: 'Projects | Sigfried Seldeslachts',
+    }
+  },
   methods: {
     showImages (imgs, index) {
       this.imgs = imgs;

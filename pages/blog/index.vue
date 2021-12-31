@@ -5,5 +5,10 @@
 <script>
 export default {
   name: 'BlogIndexPage',
+  head () {
+    return {
+      title: 'Blog | Sigfried Seldeslachts',
+    }
+  },
 }
 </script>

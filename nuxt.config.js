@@ -11,8 +11,9 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: 'An IT-Guy who is mostly working with networking solutions (BGP, VyOS, Proxmox, ...) but I also enjoy coding and learning new things.' },
+      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'og:type', content: 'website' },
     ],
     link: [
     //  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

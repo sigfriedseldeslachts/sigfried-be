@@ -12,6 +12,13 @@
 
 <script>
 export default {
-  name: 'LayoutsPages'
+  name: 'LayoutsPages',
+  head () {
+    return {
+      meta: [
+        { name: 'og:image', content: require('~/assets/images/opengraph_img.jpeg') }
+      ]
+    }
+  }
 }
 </script>
