@@ -27,6 +27,10 @@ a {
         h1 {
           @apply text-white text-4xl font-bold;
         }
+
+        p {
+          @apply text-white text-lg;
+        }
       }
     }
   }
