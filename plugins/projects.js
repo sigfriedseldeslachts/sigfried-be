@@ -14,7 +14,7 @@ export default [
       {
         src: require('~/assets/images/portfolio/isw_2.jpeg'),
         alt: 'Screenshot of a marketplace item page',
-        title: 'An actual marketplace item listed. This view is only available for authenticated students, personal are details removed.',
+        title: 'An actual marketplace item listed. This view is only available for authenticated students, personal details are removed.',
       }
     ],
   },
