@@ -5,8 +5,8 @@
     </div>
 
     <div class="h-full">
-      <section class="container mx-auto ">
-        <div class="project-list">
+      <section class="container mx-auto">
+        <div class="cards-list">
           <article v-for="project in projects" :key="project.name" :aria-labelledby="'project-title-' + project.name">
             <a :href="project.images[project.mainImage].src" target="_blank" @click.prevent="showImages(project.images, project.mainImage)" v-if="project.images !== null && project.mainImage !== null && project.mainImage >= 0">
               <img :src="project.imgThumb ? project.imgThumb : project.images[project.mainImage].src" :alt="project.images[project.mainImage].alt">
@@ -104,51 +104,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.project-list {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-2 sm:mx-0;
-
-  article {
-    @apply flex flex-col justify-end bg-gray-100 text-bg-mid-blue shadow-inner rounded-lg tracking-normal;
-
-    a {
-      @apply flex flex-1 items-center;
-
-      img {
-        @apply w-full h-full object-cover object-top rounded-lg max-h-48;
-      }
-    }
-
-    .content {
-      @apply p-6;
-
-      h3 {
-        @apply text-xl font-bold;
-      }
-
-      .button-group {
-        @apply mt-2 flex flex-row items-center space-x-4;
-      }
-
-      a {
-        &.view-button {
-          @apply px-3 py-2 rounded bg-accent-primary text-bg-light-blue transition-all ease-in-out duration-300;
-
-          &:hover, &:focus {
-            @apply text-white bg-bg-light-blue;
-          }
-        }
-      }
-
-      .tags-wrapper {
-        @apply flex flex-row overflow-x-auto items-center mt-3 gap-x-1;
-
-        .tag {
-          @apply inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 m-0 cursor-pointer;
-        }
-      }
-    }
-  }
-}
-</style>
