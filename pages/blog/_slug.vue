@@ -68,7 +68,7 @@ export default {
   }
 
   p {
-    @apply text-gray-800 mb-3;
+    @apply text-gray-700 mb-3;
 
     &:last-child {
       @apply mb-0;

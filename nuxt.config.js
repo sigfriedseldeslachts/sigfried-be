@@ -50,6 +50,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    // https://sitemap.nuxtjs.org/
+    '@nuxtjs/sitemap',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -64,4 +66,16 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
+
+  // Sitemap module configuration: https://sitemap.nuxtjs.org/
+  sitemap: {
+    hostname: 'https://sigfried.be',
+    gzip: true,
+    routes: async () => {
+      const { $content } = require("@nuxt/content");
+      const files = await $content().only(["slug"]).fetch();
+
+      return files.map((file) => ("/blog/" + file.slug));
+    }
+  }
 }
