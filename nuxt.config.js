@@ -77,5 +77,10 @@ export default {
 
       return files.map((file) => ("/blog/" + file.slug));
     }
-  }
+  },
+
+  // Public runtime configuration
+  publicRuntimeConfig: {
+    baseURL: 'https://sigfried.be',
+  },
 }
