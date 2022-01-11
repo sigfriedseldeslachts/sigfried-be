@@ -21,9 +21,9 @@ export default {
       title: `${this.document.title} | Sigfried Seldeslachts`,
       meta: [
         { hid: "description", name: "description", content: this.document.description || '' },
-        { name: "article:published_time", content: this.document.published_at },
-        { name: "article:author", content: this.document.author || "Sigfried" },
-        { name: 'og:type', hid: 'og:type', content: 'website' },
+        { property: "article:published_time", content: this.document.published_at },
+        { property: "article:author", content: this.document.author || "Sigfried" },
+        { property: 'og:type', hid: 'og:type', content: 'website' },
       ]
     }
   },

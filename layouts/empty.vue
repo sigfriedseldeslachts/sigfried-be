@@ -8,7 +8,7 @@ export default {
   head () {
     return {
       meta: [
-        { name: 'og:image', content: require('~/assets/images/opengraph_img.jpeg') },
+        { property: 'og:image', hid: 'og:image', content: require('~/assets/images/opengraph_img.jpeg') },
       ]
     }
   }

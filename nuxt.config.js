@@ -13,7 +13,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'An IT-Guy who is mostly working with networking solutions (BGP, VyOS, Proxmox, ...) but I also enjoy coding and learning new things.' },
       { name: 'format-detection', content: 'telephone=no' },
-      { name: 'og:type', hid: 'og:type', content: 'website' },
+      { property: 'og:type', hid: 'og:type', content: 'website' },
     ],
     link: [
     //  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
