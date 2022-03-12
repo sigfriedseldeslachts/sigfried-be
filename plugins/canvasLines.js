@@ -1,12 +1,15 @@
 const lines = [];
 let amount = 250;
-let canvas = null;
-let ctx = null;
-let start = 0;
-let initalized = false;
-let stopped = false;
+let canvas = null, ctx = null;
+let initalized = false, stopped = false;
+let frameTime = 0.33, frameTimeThisLoop;
+let lastLoop = process.server ? 0 : performance.now();
 
-const generateLine = () => {
+/**
+ * Create a new random line
+ * @param {Boolean} createOffset if it should create an offset so that it doesn't create a line straight away
+ */
+const generateLine = (createOffset = false) => {
   const r = 10;
   const deg = Math.random() * Math.PI * 2;
   const x = (canvas.width / 2) + (r * Math.cos(deg));
@@ -22,10 +25,10 @@ const generateLine = () => {
     x, y, angle, width,
     length: 0,
     maxLength: Math.floor(Math.random() * (100 - 10)) + 10,
-    speed: Math.random() * 5 + 0.2,
+    speed: Math.random() * (170 - 15) + 15,
     color: `rgb(255, 255, 255, ${Math.random()})`,
+    offset: createOffset ? (Math.random() * (0.5 - 0.1) + 0.1) : 0, // So that the lines don't start at the same time in the beginning
   };
-
 
   lines.push(line);
 };
@@ -52,13 +55,13 @@ const setupCanvas = (cvs) => {
 
     // Generate new lines
     for (let i = 0; i < amount; i++) {
-      generateLine();
+      generateLine(true);
     }
   });
 
   // Generate lines
   for (let i = 0; i < amount; i++) {
-    generateLine();
+    generateLine(true);
   }
 
   initalized = true;
@@ -73,9 +76,16 @@ const tick = () => {
   for (let i = lines.length - 1; i >= 0; i--) {
     const line = lines[i];
 
+    if (line.offset > 0) {
+      line.offset -= 0.02;
+      continue;
+    }
+
+    const speed = 1 * line.speed * (frameTime / 1000);
+
     // Move the line
-    line.x += Math.cos(line.angle) * line.speed;
-    line.y += Math.sin(line.angle) * line.speed;
+    line.x += Math.cos(line.angle) * speed;
+    line.y += Math.sin(line.angle) * speed;
 
     // Grow the line until it reaches the max length
     if (line.length < line.maxLength) {
@@ -96,6 +106,15 @@ const tick = () => {
       generateLine();
     }
   }
+
+  const thisFrameTime = (frameTimeThisLoop = performance.now()) - lastLoop;
+  frameTime += (thisFrameTime - frameTime) / 20;
+  lastLoop = frameTimeThisLoop;
+
+  // Draw the FPS
+  ctx.font = '20px Arial';
+  ctx.fillStyle = '#fff';
+  ctx.fillText(`FPS: ${Math.round(1000 / frameTime)}`, 10, 30);
 }
 
 const animate = (timestamp) => {
@@ -103,12 +122,7 @@ const animate = (timestamp) => {
     return;
   }
 
-  const elapsed = timestamp - start;
-
-  if (elapsed > 20) {
-    start = timestamp;
-    tick();
-  }
+  tick();
 
   requestAnimationFrame(animate);
 }
