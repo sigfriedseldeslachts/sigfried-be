@@ -2,8 +2,7 @@ const lines = [];
 let amount = 250;
 let canvas = null, ctx = null;
 let initalized = false, stopped = false;
-let frameTime = 0.33, frameTimeThisLoop;
-let lastLoop = process.server ? 0 : performance.now();
+let frameTime = 0.33, frameTimeThisLoop, lastLoop;
 
 /**
  * Create a new random line
@@ -65,9 +64,7 @@ const setupCanvas = (cvs) => {
   }
 
   initalized = true;
-  stopped = false;
-
-  requestAnimationFrame(animate);
+  startAnimation();
 }
 
 const tick = () => {
@@ -110,11 +107,6 @@ const tick = () => {
   const thisFrameTime = (frameTimeThisLoop = performance.now()) - lastLoop;
   frameTime += (thisFrameTime - frameTime) / 20;
   lastLoop = frameTimeThisLoop;
-
-  // Draw the FPS
-  ctx.font = '20px Arial';
-  ctx.fillStyle = '#fff';
-  ctx.fillText(`FPS: ${Math.round(1000 / frameTime)}`, 10, 30);
 }
 
 const animate = (timestamp) => {
@@ -133,6 +125,7 @@ const startAnimation = (canvas) => {
   }
 
   stopped = false;
+  lastLoop = performance.now();
 
   requestAnimationFrame(animate);
 }

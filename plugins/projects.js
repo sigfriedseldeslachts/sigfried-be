@@ -19,6 +19,12 @@ export default [
     ],
   },
   {
+    name: 'Mezoa',
+    description: 'Mezoa is a therapeutic center for people with therapy, speech therapy and counseling. The website is still under construction, but a few pages are already available.',
+    url: 'https://mezoa.be',
+    tags: ['Web', 'Vue', 'Nuxt'],
+  },
+  {
     name: 'VandereL',
     description: 'A website for an independant jeweler and leatherworker located in Belgium.',
     url: 'https://vanderel.be',
