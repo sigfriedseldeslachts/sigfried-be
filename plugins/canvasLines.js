@@ -1,7 +1,7 @@
 const lines = [];
 let amount = 250;
 let canvas = null, ctx = null;
-let initalized = false, stopped = false;
+let initalized = false, stopped = false, rainbow = false;
 let frameTime = 0.33, frameTimeThisLoop, lastLoop;
 
 /**
@@ -25,11 +25,29 @@ const generateLine = (createOffset = false) => {
     length: 0,
     maxLength: Math.floor(Math.random() * (100 - 10)) + 10,
     speed: Math.random() * (170 - 15) + 15,
-    color: `rgb(255, 255, 255, ${Math.random()})`,
+    color: createRandomColor(),
     offset: createOffset ? (Math.random() * (0.5 - 0.1) + 0.1) : 0, // So that the lines don't start at the same time in the beginning
   };
 
   lines.push(line);
+};
+
+/**
+ * Creates a random color
+ * @returns {String} a random color in rgba format
+ */
+const createRandomColor = () => {
+  const a = Math.random();
+
+  if (rainbow) {
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+  }
+
+  return `rgba(255, 255, 255, ${a})`;
 };
 
 const setupCanvas = (cvs) => {
@@ -93,8 +111,8 @@ const tick = () => {
     ctx.beginPath();
     ctx.moveTo(line.x, line.y);
     ctx.lineTo(line.x + Math.cos(line.angle) * line.length, line.y + Math.sin(line.angle) * line.length);
-    ctx.strokeStyle = line.color;
     ctx.lineWidth = line.width;
+    ctx.strokeStyle = line.color;
     ctx.stroke();
 
     // Check if the line is outside the canvas
@@ -134,6 +152,15 @@ const stopAnimation = () => {
   stopped = true;
 }
 
+const startRainbow = () => {
+  rainbow = true;
+
+  // Change the color of the lines
+  for (let i = 0; i < lines.length; i++) {
+    lines[i].color = createRandomColor();
+  }
+}
+
 export {
-  setupCanvas, startAnimation, stopAnimation
+  setupCanvas, startAnimation, stopAnimation, startRainbow
 }

@@ -24,12 +24,23 @@
 </template>
 
 <script>
-import { setupCanvas, startAnimation, stopAnimation } from '~/plugins/canvasLines';
+import { setupCanvas, startAnimation, stopAnimation, startRainbow } from '~/plugins/canvasLines';
 
 export default {
   name: 'IndexPage',
   layout: 'empty',
+  data () {
+    return {
+      input: '',
+    }
+  },
   beforeRouteLeave (to, from, next) {
+    if (process.client) {
+      try {
+        window.removeEventListener('keypress', this.captureKey);
+      } catch (e) {}
+    }
+
     stopAnimation();
     next();
   },
@@ -37,8 +48,34 @@ export default {
     startAnimation();
     next();
   },
+  methods: {
+    // Setup window listener to check if user is typing "rainbow"
+    setupRainbowEventListener () {
+      if (process.server) return;
+
+      window.addEventListener('keypress', this.captureKey);
+    },
+    // Capture keypress event
+    captureKey (e) {
+      const key = e.key.toLowerCase();
+
+      // Check if the pressed key is the next one in the rainbow
+      if (key === 'rainbow'.charAt(this.input.length)) {
+        this.input += key;
+      } else {
+        this.input = '';
+      }
+
+      // Check if user typed "rainbow"
+      if (this.input === 'rainbow') {
+        startRainbow();
+        this.input = '';
+      }
+    }
+  },
   mounted () {
     setupCanvas(this.$refs.cvs);
+    this.setupRainbowEventListener();
   }
 }
 </script>
