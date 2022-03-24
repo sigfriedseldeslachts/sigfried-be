@@ -11,7 +11,7 @@
 
         <dl>
           <dt>
-            <span><fa :icon="icons.faEnvelope" /></span>
+            <span class="icon"><fa :icon="icons.faEnvelope" /></span>
             Email
           </dt>
           <dd>
@@ -24,13 +24,13 @@
           <dd><a href="https://matrix.to/#/@sigfried:sigfried.be">@sigfried:sigfried.be</a></dd>
 
           <dt>
-            <span><fa :icon="icons.faDiscord" /></span>
+            <span class="icon"><fa :icon="icons.faDiscord" /></span>
             Discord
           </dt>
           <dd>Sigfried#8473</dd>
 
           <dt>
-            <span><fa :icon="icons.faTelegram" /></span>
+            <span class="icon"><fa :icon="icons.faTelegram" /></span>
             Telegram
           </dt>
           <dd><a href="https://t.me/Sigfried" rel="nofollow, noreferrer">t.me/Sigfried</a></dd>
@@ -41,25 +41,25 @@
         <h3 id="other-socials">Other social information</h3>
         <dl>
           <dt>
-            <span><fa :icon="icons.faLinkedin" /></span>
+            <span class="icon"><fa :icon="icons.faLinkedin" /></span>
             LinkedIn
             </dt>
           <dd><a href="https://www.linkedin.com/in/sigfried-seldeslachts-941b92184/" rel="noreferrer,noopener">linkedin.com/in/sigfried-seldeslachts-941b92184</a></dd>
 
           <dt>
-            <span><fa :icon="icons.faGithub" /></span>
+            <span class="icon"><fa :icon="icons.faGithub" /></span>
             GitHub
           </dt>
           <dd><a href="https://github.com/sigfriedseldeslachts" rel="noopener noreferrer">sigfriedseldeslachts</a></dd>
 
           <dt>
-            <span><fa :icon="icons.faKeybase" /></span>
+            <span class="icon"><fa :icon="icons.faKeybase" /></span>
             Keybase
           </dt>
           <dd><a href="https://keybase.io/sigfriedbe" rel="noopener noreferrer">SigfriedBE</a></dd>
 
           <dt>
-            <span><fa :icon="icons.faGitlab" /></span>
+            <span class="icon"><fa :icon="icons.faGitlab" /></span>
             GitLab
           </dt>
           <dd><a href="https://gitlab.com/djsigfried56">djsigfried56</a></dd>
@@ -132,6 +132,14 @@ export default {
 
       &:last-child {
         @apply mb-0;
+      }
+    }
+
+    dt {
+      @apply flex items-center;
+
+      .icon {
+        @apply h-4 w-4 inline-block mr-1;
       }
     }
   }
