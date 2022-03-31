@@ -53,7 +53,7 @@ export default {
 
 <style lang="scss">
 #blog-post {
-  @apply container mx-2 sm:mx-auto bg-gray-100 p-6 rounded-lg;
+  @apply container sm:w-full mx-0 sm:mx-auto bg-gray-100 p-6 rounded-lg;
 
   h2 {
     @apply font-bold text-xl mt-4 mb-3;
