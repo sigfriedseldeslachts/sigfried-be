@@ -9,7 +9,7 @@
         <article v-for="post in posts" :key="post.slug">
           <div class="content">
             <h3>
-              <router-link :to="{ name: 'blog-slug', params: { slug: post.slug } }">
+              <router-link :to="{ name: 'blog-slug', params: { slug: post.slug } }" class="mid-blue no-border">
                 {{ post.title }}
               </router-link>
             </h3>
@@ -32,7 +32,7 @@ export default {
   name: 'BlogIndexPage',
   head () {
     return {
-      title: 'Blog | Sigfried Seldeslachts',
+      title: 'Blog',
     }
   },
   data () {

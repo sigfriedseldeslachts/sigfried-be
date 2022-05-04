@@ -1,10 +1,8 @@
 export default {
-  // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Sigfried Seldeslachts',
+    title: '',
+    titleTemplate: '%s | Sigfried Seldeslachts',
     htmlAttrs: {
       lang: 'en'
     },
@@ -82,5 +80,8 @@ export default {
   // Public runtime configuration
   publicRuntimeConfig: {
     baseURL: 'https://sigfried.be',
+    piAwareUrl: 'https://fr.sigfried.be',
+    remark42Url: 'https://r42.sigfried.be',
+    remark42SiteId: 'sigfried-be'
   },
 }

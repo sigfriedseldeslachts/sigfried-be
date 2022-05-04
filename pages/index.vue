@@ -29,6 +29,12 @@ import { setupCanvas, startAnimation, stopAnimation, startRainbow } from '~/plug
 export default {
   name: 'IndexPage',
   layout: 'empty',
+  head () {
+    return {
+      title: 'Sigfried Seldeslachts',
+      titleTemplate: '',
+    }
+  },
   data () {
     return {
       input: '',

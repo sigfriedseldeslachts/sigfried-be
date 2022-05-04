@@ -26,7 +26,7 @@ nav {
       @apply flex-grow sm:flex-grow-0;
 
       a {
-        @apply text-gray-100 hover:text-gray-300 transition duration-300 ease-in-out;
+        @apply text-gray-100 hover:text-gray-300 transition duration-300 ease-in-out border-b-0;
       }
     }
   }

@@ -10,15 +10,23 @@
 
       <NuxtContent :document="document" />
     </section>
+
+    <client-only>
+      <section id="blog-post-comments">
+        <div id="remark42" />
+      </section>
+    </client-only>
   </div>
 </template>
 
 <script>
+import { bootRemark42 } from '~/plugins/remark42';
+
 export default {
   name: "BlogSlugPage",
   head () {
     return {
-      title: `${this.document.title} | Sigfried Seldeslachts`,
+      title: this.document.title,
       meta: [
         { hid: "description", name: "description", content: this.document.description || '' },
         { property: "article:published_time", content: this.document.published_at },
@@ -32,12 +40,36 @@ export default {
       document: {},
     }
   },
+  // Before route leave
+  beforeRouteLeave (to, from, next) {
+    try {
+      if (process.client && window.REMARK42) {
+        window.REMARK42.destroy();
+      }
+    } catch (error) {}
+
+    next();
+  },
+  methods: {
+    async loadRemark42 () {
+      // If is server, stop here
+      if (process.server) return;
+
+      // On next tick, load remark42
+      this.$nextTick(() => {
+        bootRemark42(this.$config.remark42Url, this.$config.remark42SiteId, this.document.title);
+      });
+    }
+  },
   computed: {
     // Format date to a human readable format
     date () {
       const date = new Date(this.document.published_at);
       return date.toLocaleDateString('en-GB');
     },
+  },
+  mounted () {
+    this.loadRemark42();
   },
   async asyncData({ $content, params, error }) {
     try {
@@ -52,8 +84,16 @@ export default {
 </script>
 
 <style lang="scss">
+#blog-post-comments {
+  @apply mt-2;
+}
+
+#blog-post, #blog-post-comments {
+  @apply container sm:w-full mx-0 sm:mx-auto rounded-lg;
+}
+
 #blog-post {
-  @apply container sm:w-full mx-0 sm:mx-auto bg-gray-100 p-6 rounded-lg;
+  @apply bg-gray-100 p-6;
 
   h2 {
     @apply font-bold text-xl mt-4 mb-3;

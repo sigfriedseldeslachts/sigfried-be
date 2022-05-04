@@ -5,7 +5,7 @@
       <p>You can contact me via various ways.</p>
     </div>
 
-    <section aria-labelledby="contactmeh1" id="contactme-section">
+    <section id="contactme-section">
       <div aria-labelledby="contact-info" class="contact-info-card">
         <h3 id="contact-info">Contact information</h3>
 
@@ -77,7 +77,7 @@ export default {
   name: 'ContactPage',
   head () {
     return {
-      title: 'Contact | Sigfried Seldeslachts',
+      title: 'Contact',
     }
   },
   computed: {

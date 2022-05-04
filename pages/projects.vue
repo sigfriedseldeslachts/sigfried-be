@@ -20,8 +20,13 @@
               <p>{{ project.description }}</p>
 
               <div class="button-group">
-                <span><a :href="project.url" ref="noreferrer noopener" v-if="project.url !== null" class="view-button">View project</a></span>
-                <span><a href="#" v-if="Array.isArray(project.images) && project.images.length > 1" @click.prevent="showImages(project.images, project.mainImage)">View all images</a></span>
+                <span v-if="project.url !== null">
+                  <!-- If router is false, use a regular link -->
+                  <a :href="project.url" ref="noreferrer noopener" v-if="!project.router" class="view-button">View project</a>
+                  <!-- Otherwise a Nuxt link -->
+                  <nuxt-link :to="project.url" class="view-button" v-else>View project</nuxt-link>
+                </span>
+                <span><a href="#" v-if="Array.isArray(project.images) && project.images.length > 1" @click.prevent="showImages(project.images, project.mainImage)" class="mid-blue">View all images</a></span>
               </div>
 
               <span v-if="Array.isArray(project.tags) && project.tags.length > 0" class="tags-wrapper">
@@ -62,7 +67,7 @@ export default {
   },
   head () {
     return {
-      title: 'Projects | Sigfried Seldeslachts',
+      title: 'Projects',
     }
   },
   methods: {

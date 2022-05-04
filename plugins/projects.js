@@ -67,6 +67,27 @@ export default [
     ],
   },
   {
+    name: 'ADS-B Receiver',
+    description: 'As I am an airplane pilot myself I am always interested in the planes flying around. Therefore I decided to make a small ADS-B receiver, I transmit the data to FlightAware, FR24 and ADS-B Exchange.',
+    url: {
+      name: 'others-aircraft'
+    },
+    router: true,
+    tags: ['Hardware', 'Airplanes & Space', 'Raspberry Pi'],
+    imgThumb: require('~/assets/images/portfolio/adsb/thumb.jpeg'),
+    mainImage: 0,
+    images: [
+      {
+        src: require('~/assets/images/portfolio/adsb/antenna.jpeg'),
+        alt: 'Picture showing the antenna above the roof.',
+      },
+      {
+        src: require('~/assets/images/portfolio/adsb/rpi.jpeg'),
+        alt: 'Picture showing the Raspberry Pi connected to a USB receiver.',
+      },
+    ],
+  },
+  {
     name: 'AS212767',
     description: 'This is my own personal research network. I have two IPv6 prefixes and advertise them on the internet.',
     url: 'https://as212767.net',
