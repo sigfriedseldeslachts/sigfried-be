@@ -14,7 +14,7 @@ The first thing you will need to do is to retrieve the SQLite database. This is 
 For consitency I wanted to make sure that I did not have Home Assistant running while I was retrieving the database. So I stopped Home Assistant and retrieved the database. However since you need to have Core running to use SMB or SSH it isn't really straightforward. There are multiple ways to do this:
 
 - Get the whole disk content of the OS. If you are using a Raspberry Pi this is probably the easiest and fastest way, just insert the SD into your computer. If you are using a VM, create a backup of the disk and then retrieve the disk content.
-- Do this step after Step 2 & 3. What I mean is, you first setup the datbase and let configure Home Assistant to use the database. This will only remove the events and history. Your users, config, etc. will not be changed since this isn't stored in the SQLite database. After that you can simply download the database file using SSH or SMB and thus ensure consistency.
+- Do this step after Step 2 & 3. What I mean is, you first setup the database and configure Home Assistant to use the database. This will only remove the events and history. Your users, config, etc. will not be changed since this isn't stored in the SQLite database. After that you can simply download the database file using SSH or SMB and thus ensure consistency.
 - Install a tool on the OS itself, like `rsync` or `netcat`. This is will allow you to retrieve the database from the OS itself. I decided against this because I did not want to install other software on the OS.
 
 

@@ -81,7 +81,6 @@ export default {
   publicRuntimeConfig: {
     baseURL: 'https://sigfried.be',
     piAwareUrl: 'https://fr.sigfried.be',
-    remark42Url: 'https://r42.sigfried.be',
-    remark42SiteId: 'sigfried-be'
+    commentoUrl: 'https://comments.sigfried.be/js/commento.js',
   },
 }

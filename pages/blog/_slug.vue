@@ -13,14 +13,14 @@
 
     <client-only>
       <section id="blog-post-comments">
-        <div id="remark42" />
+        <div id="commento-box" />
       </section>
     </client-only>
   </div>
 </template>
 
 <script>
-import { bootRemark42 } from '~/plugins/remark42';
+import { loadCommento } from '~/plugins/commento';
 
 export default {
   name: "BlogSlugPage",
@@ -40,24 +40,18 @@ export default {
       document: {},
     }
   },
-  // Before route leave
-  beforeRouteLeave (to, from, next) {
-    try {
-      if (process.client && window.REMARK42) {
-        window.REMARK42.destroy();
-      }
-    } catch (error) {}
-
-    next();
-  },
   methods: {
     async loadRemark42 () {
       // If is server, stop here
       if (process.server) return;
 
-      // On next tick, load remark42
+      // On next tick, load comment section
       this.$nextTick(() => {
-        bootRemark42(this.$config.remark42Url, this.$config.remark42SiteId, this.document.title);
+        try {
+          loadCommento(this.$config.commentoUrl, `blog-${this.$route.params.slug}`);
+        } catch (e) {
+          console.error("Couldn't initalize commento:", e);
+        }
       });
     }
   },
