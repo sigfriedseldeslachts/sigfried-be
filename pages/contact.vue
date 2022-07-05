@@ -15,7 +15,7 @@
             Email
           </dt>
           <dd>
-            me [at] sigfried.be
+            contact [at] sigfried.be
 
             <p class="subinfo">For secure communication use my GPG Key! (See Keybase profile)</p>
           </dd>
