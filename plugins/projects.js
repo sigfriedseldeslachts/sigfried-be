@@ -19,12 +19,6 @@ export default [
     ],
   },
   {
-    name: 'Mezoa',
-    description: 'Mezoa is a therapeutic center for people with therapy, speech therapy and counseling. The website is still under construction, but a few pages are already available.',
-    url: 'https://mezoa.be',
-    tags: ['Web', 'Vue', 'Nuxt'],
-  },
-  {
     name: 'VandereL',
     description: 'A website for an independant jeweler and leatherworker located in Belgium.',
     url: 'https://vanderel.be',
@@ -39,15 +33,15 @@ export default [
     ],
   },
   {
-    name: 'Boomverzorging Michiel',
-    description: 'This very simple one page website was made for my brother who is a treeworker.',
-    url: 'https://boomverzorgingmichiel.be',
-    tags: ['Web', 'Vue', 'Nuxt'],
-    imgThumb: require('~/assets/images/portfolio/boomverzorging_michiel_thumb.jpeg'),
+    name: 'Weather Station',
+    description: 'I have always been interested in building my own weather station, I am currently working on one. While the project is not finished yet, you can already see the weather station in action.',
+    url: 'https://weer.famseldeslachts.be',
+    tags: ['Web', 'Vue', 'Nuxt', 'Spring', 'Kubernetes', 'Arduino', 'ESP'],
+    imgThumb: require('~/assets/images/portfolio/weather_station_thumb.jpeg'),
     mainImage: 0,
     images: [
       {
-        src: require('~/assets/images/portfolio/boomverzorging_michiel.jpeg'),
+        src: require('~/assets/images/portfolio/weather_station_1.jpeg'),
         alt: 'Screenshot of the website',
       },
     ],
@@ -62,6 +56,20 @@ export default [
     images: [
       {
         src: require('~/assets/images/portfolio/echo_communication.jpeg'),
+        alt: 'Screenshot of the website',
+      },
+    ],
+  },
+  {
+    name: 'Boomverzorging Michiel',
+    description: 'This very simple one page website was made for my brother who is a treeworker.',
+    url: 'https://boomverzorgingmichiel.be',
+    tags: ['Web', 'Vue', 'Nuxt'],
+    imgThumb: require('~/assets/images/portfolio/boomverzorging_michiel_thumb.jpeg'),
+    mainImage: 0,
+    images: [
+      {
+        src: require('~/assets/images/portfolio/boomverzorging_michiel.jpeg'),
         alt: 'Screenshot of the website',
       },
     ],
@@ -86,6 +94,12 @@ export default [
         alt: 'Picture showing the Raspberry Pi connected to a USB receiver.',
       },
     ],
+  },
+  {
+    name: 'Mezoa',
+    description: 'Mezoa is a therapeutic center for people with therapy, speech therapy and counseling. The website is still under construction, but a few pages are already available.',
+    url: 'https://mezoa.be',
+    tags: ['Web', 'Vue', 'Nuxt'],
   },
   {
     name: 'AS212767',
