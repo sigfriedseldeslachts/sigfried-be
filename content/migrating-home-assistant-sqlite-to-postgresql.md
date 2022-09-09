@@ -9,14 +9,17 @@ I expect you already have a PostgreSQL database running somewhere. If you do not
 
 ### Step 1: Retrieve the SQLite database
 
-The first thing you will need to do is to retrieve the SQLite database. This is the `home-assistant_v2.db` file. 
+The first thing you will need to do is to retrieve the SQLite database. This is the `home-assistant_v2.db` file.
 
-For consitency I wanted to make sure that I did not have Home Assistant running while I was retrieving the database. So I stopped Home Assistant and retrieved the database. However since you need to have Core running to use SMB or SSH it isn't really straightforward. There are multiple ways to do this:
+As pointed out to a comment below, you can actually disable the recorder and then retrieve the database. This should also ensure consistency and is easier than my options. You can call the service `recorder.disable` which will stop saving any events and states to the database. You can then retrieve the database and then re-enable the recorder. More information is at [Home Assistant Recorder](https://www.home-assistant.io/integrations/recorder/#service-disable) under the *Services*.
+
+I will leave the options below in case that does not work for you.
+
+For consistency I wanted to make sure that I did not have Home Assistant running while I was retrieving the database. So I stopped Home Assistant and retrieved the database. However since you need to have Core running to use SMB or SSH it isn't really straightforward. There are multiple ways to do this:
 
 - Get the whole disk content of the OS. If you are using a Raspberry Pi this is probably the easiest and fastest way, just insert the SD into your computer. If you are using a VM, create a backup of the disk and then retrieve the disk content.
 - Do this step after Step 2 & 3. What I mean is, you first setup the database and configure Home Assistant to use the database. This will only remove the events and history. Your users, config, etc. will not be changed since this isn't stored in the SQLite database. After that you can simply download the database file using SSH or SMB and thus ensure consistency.
 - Install a tool on the OS itself, like `rsync` or `netcat`. This is will allow you to retrieve the database from the OS itself. I decided against this because I did not want to install other software on the OS.
-
 
 I went for the first option, I downloaded a backup, extracted it and then retrieved the database file. I will make another post about this later.
 
