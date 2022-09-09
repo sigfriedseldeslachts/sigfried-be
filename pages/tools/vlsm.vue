@@ -2,6 +2,7 @@
   <div class="component-wrapper">
     <div class="title-section">
       <h1>VLSM Calculator</h1>
+      <p>During my time at a student group, we modified an existing VLSM calculator to a better UI. I found this again and decided to publish it, however we never saved the original author and therefore cannot credit that person. Apart from that, it's pretty simple but doesn't always work, sometimes it gives incorrect representations, so always verify it. Invalid networks (0, less or empty) are automatically removed</p>
     </div>
 
     <div class="container sm:w-full mx-0 sm:mx-auto">
@@ -13,9 +14,9 @@
               <input type="text" id="addressBlockInput" v-model="form.addressBlock">
           </div>
           <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-2.5">
-            <div class="field" v-for="(tag, index) in form.hosts" :key="tag + '-' + index">
-              <label :for="tag + '-' + index" class="white">Network {{ index + 1 }}</label>
-              <input type="text" :id="tag + '-' + index" v-model="form.hosts[index]">
+            <div class="field" v-for="(tag, index) in form.hosts" :key="'network-' + index">
+              <label :for="'network-' + index" class="white">Network {{ index + 1 }}</label>
+              <input type="text" :id="'network-' + index" v-model="form.hosts[index]">
             </div>
           </div>
           <div class="field">
@@ -74,6 +75,11 @@ import calculateVLSM from '~/plugins/tools/vlsm';
 
 export default {
   name: 'ToolsVlsm',
+  head () {
+    return {
+      title: 'VLSM Calculator',
+    }
+  },
   data () {
     return {
       form: {

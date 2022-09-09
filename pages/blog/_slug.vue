@@ -5,7 +5,7 @@
       <p>Published on: <time :datetime="date">{{ date }}</time></p>
     </div>
 
-    <div class="bg-gradient-to-b via-transparent from-transparent to-white">
+    <div class="bg-white" style="background:linear-gradient(180deg, rgba(255,255,255,0) 38%, rgba(255,255,255,1) 82%);">
       <section id="blog-post" aria-labelledby="blog-post-title">
         <p>{{ document.description }}</p>
 

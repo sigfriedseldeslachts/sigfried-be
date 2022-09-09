@@ -7,14 +7,14 @@
       <main class="space-y-6">
         <h1 class="text-6xl font-bold text-white">Hello, I'm Sigfried</h1>
         <p class="text-gray-100 text-lg">
-          An IT-Guy who is mostly working with networking solutions (BGP, VyOS, Proxmox, ...) but I also enjoy coding and learning new things.
+          An IT-Guy who is mostly working with networking solutions but I also enjoy coding and learning new things. I have finished my Bachelor's degree in applied computer science and currently doing my Master's degree in Electronics and ICT Engineering Technology at the University of Antwerp.
         </p>
-
         <div>
           <nuxt-link to="/projects" class="bg-transparent rounded-full font-bold text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-gray-100 mr-6 border-2 border-gray-100 hover:text-gray-900">
             See some projects
             <svg xmlns="http://www.w3.org/2000/svg" class="inline -mt-0.5 ml-2 w-6 stroke-current stroke-2" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </nuxt-link>
+          <a href="https://cloud.famseldeslachts.be/s/5sCwAHmXYPEydRm">CV (Dutch)</a>
         </div>
       </main>
 
