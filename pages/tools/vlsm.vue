@@ -45,46 +45,22 @@
         <table id="vlsm-table">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col">
-                Requested size
-              </th>
-              <th scope="col">
-                Allocated size
-              </th>
-              <th scope="col">
-                CIDR Notation
-              </th>
-              <th scope="col">
-                Subnetmask
-              </th>
-              <th scope="col">
-                Available range
-              </th>
-              <th scope="col">
-                Broadcast address
-              </th>
+              <th scope="col">Requested size</th>
+              <th scope="col">Allocated size</th>
+              <th scope="col">CIDR Notation</th>
+              <th scope="col">Subnetmask</th>
+              <th scope="col">Available range</th>
+              <th scope="col">Broadcast address</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="row in result.subnets" :key="row.networkAddress">
-              <td>
-                {{ row.requestedSize }}
-              </td>
-              <td>
-                {{ row.allocatedSize }}
-              </td>
-              <td>
-                {{ row.networkAddress }}/{{ row.networkMask }}
-              </td>
-              <td>
-                {{ row.subnetMask }}
-              </td>
-              <td>
-                {{ row.firstUsable }} - {{ row.lastUsable }}
-              </td>
-              <td>
-                {{ row.broadcastAddr }}
-              </td>
+              <td>{{ row.requestedSize }}</td>
+              <td>{{ row.allocatedSize }}</td>
+              <td>{{ row.networkAddress }}/{{ row.networkMask }}</td>
+              <td>{{ row.subnetMask }}</td>
+              <td>{{ row.firstUsable }} - {{ row.lastUsable }}</td>
+              <td>{{ row.broadcastAddr }}</td>
             </tr>
           </tbody>
         </table>
@@ -113,6 +89,8 @@ export default {
   },
   methods: {
     calculate () {
+      this.filterHosts();
+
       try {
         this.result = calculateVLSM(this.form.addressBlock, this.form.hosts);
       } catch (error) {
@@ -125,6 +103,13 @@ export default {
         alert(msg);
       }
     },
+    filterHosts () {
+      // If any of the values are empty or less than or equal to 0, remove it
+      this.form.hosts = this.form.hosts.filter(v => v !== '' && v > 0);
+
+      // Sort the array
+      this.form.hosts.sort((a, b) => b - a);
+    }
   }
 }
 </script>
