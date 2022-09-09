@@ -44,9 +44,9 @@ host homeassistant_db     homeassistant   192.168.0.xxx/32      md5 # Home Assis
 host homeassistant_db     homeassistant   192.168.0.xxx/32      md5 # Your PC
 ```
 
-Now you will only need to restart PostgreSQL.
+Now you will only need to reload PostgreSQL.
 ```
-sudo systemctl restart postgresql
+sudo systemctl reload postgresql
 ```
 
 ### Step 3: Let Home Assistant create the tables
@@ -79,11 +79,14 @@ As you can see I am using a `!secret` to hide the password in the configuration 
 psql_string: "postgresql://homeassistant:PASSWORD@192.168.0.XXX/homeassistant_db"
 ```
 
-The `exclude` section is used to exclude certain data from being recorded. You can find more information about this in the [Home Assistant documentation](https://home-assistant.io/docs/configuration/recorder/).
+The `exclude` section is used to exclude certain data from being recorded. You can find more information about this in the [Home Assistant documentation](https://home-assistant.io/integrations/recorder/).
 
 Now restart Home Assistant, once it is running you should see your normal Home Assistant UI but the history will be empty. You can now stop Home Assistant again.
 
 ### Step 4: Migrate the database
+
+**IMPORTANT**: If you are running a database that still contains the `created` column in the `events` table, you **will** need to remove this to migrate the database. Otherwise you will receive an error. The `created` column was removed in a recent Home Assistant update. \
+If you are using a recent version of SQLite you can simply open the database and enter `ALTER TABLE events` and afterwards `DROP COLUMN created`. Thanks to a comment for pointing this out.
 
 The second to last step is to migrate the database. I used the tool [pgLoader](https://pgloader.readthedocs.io/en/latest/) to accomplish this. (On Debian-based install via: `apt install pgloader`) \
 Create a file `migrate.sql` with the following content. Obviously you will need to change the sqlite database path and the postgres connection string.
@@ -103,5 +106,5 @@ pgloader migrate.sql
 
 You should now be able to start Home Assistant again and all your data should be migrated. You will notice that loading history data is considerably faster than the SQLite database.
 
-Hopefully this tutorial has helped you migrate your data from SQLite to PostgreSQL.
+Hopefully this tutorial has helped you migrate your data from SQLite to PostgreSQL. Let me know in the comments if you experience any issues!
 

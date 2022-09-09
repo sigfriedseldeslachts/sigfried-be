@@ -1,21 +1,23 @@
 <template>
   <div class="component-wrapper">
-    <div class="title-section">
+    <div class="title-section mb-10">
       <h1 id="blog-post-title">{{ document.title }}</h1>
       <p>Published on: <time :datetime="date">{{ date }}</time></p>
     </div>
 
-    <section id="blog-post" aria-labelledby="blog-post-title">
-      <p>{{ document.description }}</p>
+    <div id="content-overflow-box">
+      <section id="blog-post" aria-labelledby="blog-post-title">
+        <p>{{ document.description }}</p>
 
-      <NuxtContent :document="document" />
-    </section>
-
-    <client-only>
-      <section id="blog-post-comments">
-        <div id="commento-box" />
+        <NuxtContent :document="document" />
       </section>
-    </client-only>
+
+      <client-only>
+        <section id="blog-post-comments">
+          <div id="commento-box" />
+        </section>
+      </client-only>
+    </div>
   </div>
 </template>
 
@@ -41,7 +43,7 @@ export default {
     }
   },
   methods: {
-    async loadRemark42 () {
+    async loadComments () {
       // If is server, stop here
       if (process.server) return;
 
@@ -63,7 +65,7 @@ export default {
     },
   },
   mounted () {
-    this.loadRemark42();
+    this.loadComments();
   },
   async asyncData({ $content, params, error }) {
     try {
@@ -87,7 +89,7 @@ export default {
 }
 
 #blog-post {
-  @apply bg-gray-100 p-6;
+  @apply p-6 bg-gray-100 shadow-lg -mt-10;
 
   h2 {
     @apply font-bold text-xl mt-4 mb-3;

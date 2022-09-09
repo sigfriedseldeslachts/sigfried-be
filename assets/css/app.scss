@@ -1,5 +1,5 @@
 html {
-  @apply h-full bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue;
+  @apply bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue;
 }
 
 html, body, #__nuxt, #__layout {
@@ -55,14 +55,6 @@ a {
 a {
   @apply text-accent-primary border-b transition-all duration-300 ease-in-out border-accent-primary;
 
-  &.view-button {
-    @apply px-3 py-2 rounded bg-accent-primary text-bg-light-blue transition-all ease-in-out duration-300 no-underline border-b-0;
-
-    &:hover, &:focus {
-      @apply text-white bg-bg-light-blue;
-    }
-  }
-
   &.mid-blue {
     @apply text-bg-mid-blue border-bg-mid-blue;
   }
@@ -76,4 +68,17 @@ a {
   }
 }
 
+.view-button {
+  @apply px-3 py-2 rounded bg-accent-primary text-bg-light-blue transition-all ease-in-out duration-300 no-underline border-b-0;
+
+  &:hover, &:focus {
+    @apply text-white bg-bg-light-blue;
+  }
+}
+
+#content-overflow-box {
+  @apply relative border-r-8 bg-gradient-to-b from-transparent via-transparent to-white;
+}
+
 @import "cards";
+@import "forms";
