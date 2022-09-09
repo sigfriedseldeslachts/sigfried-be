@@ -5,19 +5,21 @@
       <p>Published on: <time :datetime="date">{{ date }}</time></p>
     </div>
 
-    <div id="content-overflow-box">
+    <div class="bg-gradient-to-b via-transparent from-transparent to-white">
       <section id="blog-post" aria-labelledby="blog-post-title">
         <p>{{ document.description }}</p>
 
         <NuxtContent :document="document" />
       </section>
+    </div>
 
-      <client-only>
+    <client-only>
+      <div class="bg-white pt-2">
         <section id="blog-post-comments">
           <div id="commento-box" />
         </section>
-      </client-only>
-    </div>
+      </div>
+    </client-only>
   </div>
 </template>
 

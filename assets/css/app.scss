@@ -76,9 +76,5 @@ a {
   }
 }
 
-#content-overflow-box {
-  @apply relative border-r-8 bg-gradient-to-b from-transparent to-white;
-}
-
 @import "cards";
 @import "forms";
