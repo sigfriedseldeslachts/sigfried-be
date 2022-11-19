@@ -3,7 +3,15 @@ html {
 }
 
 html, body, #__nuxt, #__layout {
-  @apply h-full overflow-y-auto overflow-x-hidden;
+  @apply h-full overflow-x-hidden;
+}
+
+html, body {
+  @apply overflow-y-hidden;
+}
+
+#__nuxt, #__layout {
+  @apply overflow-y-auto;
 }
 
 a {
