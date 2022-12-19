@@ -62,7 +62,13 @@
             <span class="icon"><fa :icon="icons.faGitlab" /></span>
             GitLab
           </dt>
-          <dd><a href="https://gitlab.com/djsigfried56">djsigfried56</a></dd>
+          <dd><a href="https://gitlab.com/djsigfried56" rel="noopener noreferrer">djsigfried56</a></dd>
+
+          <dt>
+            <span class="icon"><fa :icon="icons.faMastodon" /></span>
+            Mastodon
+          </dt>
+          <dd><a rel="me" href="https://mastodon.sigfried.be/@Sigfried">mastodon.sigfried.be@Sigfried</a></dd>
         </dl>
       </aside>
     </section>
@@ -71,7 +77,7 @@
 
 <script>
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faTelegram, faLinkedin, faKeybase, faGitlab, faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faTelegram, faLinkedin, faKeybase, faGitlab, faDiscord, faMastodon } from '@fortawesome/free-brands-svg-icons';
 
 export default {
   name: 'ContactPage',
@@ -89,7 +95,8 @@ export default {
         faLinkedin,
         faKeybase,
         faGitlab,
-        faDiscord
+        faDiscord,
+        faMastodon
       };
     }
   }
