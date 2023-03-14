@@ -28,12 +28,6 @@
             Discord
           </dt>
           <dd>Sigfried#8473</dd>
-
-          <dt>
-            <span class="icon"><fa :icon="icons.faTelegram" /></span>
-            Telegram
-          </dt>
-          <dd><a href="https://t.me/Sigfried" rel="nofollow, noreferrer">t.me/Sigfried</a></dd>
         </dl>
       </div>
 
