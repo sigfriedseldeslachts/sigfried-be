@@ -2,7 +2,7 @@
   <div class="component-wrapper">
     <div class="title-section">
       <h1>VLSM Calculator</h1>
-      <p>During my time at a student group, we modified an existing VLSM calculator to a better UI. I found this again and decided to publish it, however we never saved the original author and therefore cannot credit that person. Apart from that, it's pretty simple but doesn't always work, sometimes it gives incorrect representations, so always verify it. Invalid networks (0, less or empty) are automatically removed</p>
+      <p>During my time at a student group, we modified an existing VLSM calculator to a better UI. I found this again and decided to publish it, however we never saved the original author and after searching I failed to find the original. Therefore I cannnot credit that person. Apart from that, it's pretty simple but doesn't always work, sometimes it gives incorrect representations, so always verify it. Invalid networks (0, less or empty) are automatically removed</p>
     </div>
 
     <div class="container sm:w-full mx-0 sm:mx-auto">

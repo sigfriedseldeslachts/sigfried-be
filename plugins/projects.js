@@ -1,5 +1,34 @@
 export default [
   {
+    name: '[WIP] Star Wars D-O Droid',
+    description: 'One of my current projects is building the D-O droid from the Star Wars sequels. It will be a fully functional droid that can move around and make sounds. It is based on a design by Michael Baddeley which some major software changes. I am currently writing a blog post about this project, it will be available soon.',
+    url: null,
+    tags: ['Raspberry Pi', 'Arduino', 'ROS', '3D Printing'],
+    imgThumb: require('~/assets/images/portfolio/dorobot/wip_1_thumb.jpeg'),
+    imgThumbPosition: 'center',
+    mainImage: 0,
+    images: [
+      {
+        src: require('~/assets/images/portfolio/dorobot/wip_1.jpeg'),
+        alt: 'Robot standing on a table with one wheel attached.',
+      },
+    ],
+  },
+  {
+    name: 'Weather Station',
+    description: 'I have always been interested in building my own weather station, I am currently working on one. While the project is not finished yet, you can already see the weather station in action (currently it is not live!).',
+    url: 'https://weer.famseldeslachts.be',
+    tags: ['Web', 'Vue', 'Nuxt', 'Spring', 'Arduino', 'ESP'],
+    imgThumb: require('~/assets/images/portfolio/weather_station_thumb.jpeg'),
+    mainImage: 0,
+    images: [
+      {
+        src: require('~/assets/images/portfolio/weather_station_1.jpeg'),
+        alt: 'Screenshot of the website',
+      },
+    ],
+  },
+  {
     name: 'ISW Leuven',
     description: 'For the student association ISW Leuven I made a new website and also a whole authentication system with a marketplace that made it possible for students to list their used books so that other students can buy it instead of a new one.',
     url: 'https://iswleuven.be',
@@ -28,20 +57,6 @@ export default [
     images: [
       {
         src: require('~/assets/images/portfolio/vanderel.jpeg'),
-        alt: 'Screenshot of the website',
-      },
-    ],
-  },
-  {
-    name: 'Weather Station',
-    description: 'I have always been interested in building my own weather station, I am currently working on one. While the project is not finished yet, you can already see the weather station in action.',
-    url: 'https://weer.famseldeslachts.be',
-    tags: ['Web', 'Vue', 'Nuxt', 'Spring', 'Kubernetes', 'Arduino', 'ESP'],
-    imgThumb: require('~/assets/images/portfolio/weather_station_thumb.jpeg'),
-    mainImage: 0,
-    images: [
-      {
-        src: require('~/assets/images/portfolio/weather_station_1.jpeg'),
         alt: 'Screenshot of the website',
       },
     ],

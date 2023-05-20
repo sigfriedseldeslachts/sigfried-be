@@ -1,7 +1,8 @@
 <template>
   <div class="component-wrapper">
     <div class="title-section">
-      <h1>Some of my Projects</h1>
+      <h1>Some projects</h1>
+      <p>These are some of my projects that I have <i>actually</i> finished or I am still working on.</p>
     </div>
 
     <div class="h-full">
@@ -9,7 +10,10 @@
         <div class="cards-list">
           <article v-for="project in projects" :key="project.name" :aria-labelledby="'project-title-' + project.name">
             <a :href="project.images[project.mainImage].src" target="_blank" @click.prevent="showImages(project.images, project.mainImage)" v-if="project.images !== null && project.mainImage !== null && project.mainImage >= 0">
-              <img :src="project.imgThumb ? project.imgThumb : project.images[project.mainImage].src" :alt="project.images[project.mainImage].alt">
+              <img
+                :src="project.imgThumb ? project.imgThumb : project.images[project.mainImage].src"
+                :alt="project.images[project.mainImage].alt"
+                :style="getObjectPosition(project)">
             </a>
             <div class="flex-1 flex items-center justify-center text-gray-500" v-else>
               <span class="py-4 px-2">No image available.</span>
@@ -88,6 +92,13 @@ export default {
     },
     isTagSelected (tag) {
       return this.selectedTags.includes(tag);
+    },
+    getObjectPosition (project) {
+      if (!project.imgThumbPosition) {
+        return '';
+      }
+
+      return `object-position: ${project.imgThumbPosition};`;
     }
   },
   computed: {
