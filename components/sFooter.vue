@@ -1,5 +1,5 @@
 <template>
-  <footer :class="isWhite">
+  <footer>
     <div class="footer-container">
       <div class="col-span-2">
         Made by Sigfried
@@ -12,12 +12,6 @@
 <script>
 export default {
   name: "sFooter",
-  computed: {
-    isWhite () {
-      // When the router slug is equal to the blog slug, return true
-      return this.$route.name === 'blog-slug' ? 'white' : '';
-    }
-  }
 }
 </script>
 

@@ -46,8 +46,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
     // https://sitemap.nuxtjs.org/
     '@nuxtjs/sitemap',
   ],
@@ -68,13 +66,13 @@ export default {
   // Sitemap module configuration: https://sitemap.nuxtjs.org/
   sitemap: {
     hostname: 'https://sigfried.be',
+    path: '/default-nuxt-sitemap.xml',
     gzip: true,
-    routes: async () => {
-      const { $content } = require("@nuxt/content");
-      const files = await $content().only(["slug"]).fetch();
-
-      return files.map((file) => ("/blog/" + file.slug));
-    }
+    sitemaps: [
+      {
+        path: '/main-sitemap.xml'
+      },
+    ]
   },
 
   // Public runtime configuration
