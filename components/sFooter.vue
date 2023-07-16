@@ -1,10 +1,12 @@
 <template>
   <footer>
     <div class="footer-container">
-      <div class="col-span-2">
+      <div class="col-span-3">
         Made by Sigfried
       </div>
-      <div></div>
+      <div class="text-right">
+        <nuxt-link :to="{ name: 'others-privacy' }">Privacy</nuxt-link>
+      </div>
     </div>
   </footer>
 </template>
