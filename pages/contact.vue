@@ -15,9 +15,12 @@
             Email
           </dt>
           <dd>
-            contact [at] sigfried.be
-
-            <p class="subinfo">For secure communication use my GPG Key! (See Keybase profile)</p>
+            <div v-show="!solved && !showError">
+              <p>Solve the captcha to see the contact e-mail.</p>
+              <div ref="turnstile" />
+            </div>
+            <p v-show="showError">An error occured while loading the captcha.</p>
+            <a v-if="solved" :href="'mailto:' + result">{{ result }}</a>
           </dd>
 
           <dt>Matrix</dt>
@@ -62,7 +65,7 @@
             <span class="icon"><fa :icon="icons.faMastodon" /></span>
             Mastodon
           </dt>
-          <dd><a rel="me" href="https://mastodon.sigfried.be/@Sigfried">mastodon.sigfried.be@Sigfried</a></dd>
+          <dd><a rel="me" href="https://mastodon.social/@Sigfried">mastodon.social@Sigfried</a></dd>
         </dl>
       </aside>
     </section>
@@ -80,6 +83,12 @@ export default {
       title: 'Contact',
     }
   },
+  data () {
+    return {
+      solved: false,
+      showError: false
+    }
+  },
   computed: {
     icons() {
       return {
@@ -92,7 +101,34 @@ export default {
         faDiscord,
         faMastodon
       };
+    },
+    result () {
+      return Buffer.from('aW5mb0BzaWdmcmllZC5iZQ==', 'base64').toString();
     }
+  },
+  methods: {
+    turnstile () {
+      try {
+        window.turnstile.ready(() => {
+          turnstile.render(this.$refs.turnstile, {
+            sitekey: '0x4AAAAAAAP824KZpnPuELGa',
+            callback: (result) => {
+              console.log(result);
+              this.solved = true;
+            }
+          });
+        });
+      } catch (e) {
+        if (showError) return;
+        this.showError = true;
+        setTimeout(() => {
+          this.turnstile();
+        }, 2000);
+      }
+    }
+  },
+  mounted () {
+    this.turnstile();
   }
 }
 </script>
