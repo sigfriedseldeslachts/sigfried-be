@@ -1,7 +1,8 @@
 node_modules
-.nuxt
 dist
+.vscode
+README.md
 .gitignore
 .git
-README.md
-.dockerignore
+.editorconfig
+Dockerfile

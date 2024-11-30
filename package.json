@@ -1,34 +1,27 @@
 {
-  "name": "personal-site",
-  "version": "1.0.0",
-  "private": true,
+  "name": "sigfried-be",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.6",
-    "@nuxtjs/proxy": "^2.1.0",
-    "@nuxtjs/sitemap": "^2.4.0",
-    "core-js": "^3.19.3",
-    "express": "^4.17.3",
-    "nuxt": "^2.15.8",
-    "vue": "^2.6.14",
-    "vue-easy-lightbox": "^0.16.2",
-    "vue-server-renderer": "^2.6.14",
-    "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.46.0"
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/svelte": "^6.0.2",
+    "@astrojs/tailwind": "^5.1.2",
+    "astro": "^4.16.16",
+    "luminous-lightbox": "^2.4.0",
+    "svelte": "^5.2.11",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@nuxtjs/fontawesome": "^1.1.2",
-    "@nuxtjs/tailwindcss": "^4.2.1",
-    "@tailwindcss/forms": "^0.5.2",
-    "postcss": "^8.4.4",
-    "sass": "^1.45.1",
-    "sass-loader": "10"
+    "@tailwindcss/forms": "^0.5.9",
+    "sass-embedded": "^1.81.0"
   }
 }

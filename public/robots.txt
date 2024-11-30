@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /others/privacy
+
+Sitemap: https://sigfried.be/sitemap-index.xml

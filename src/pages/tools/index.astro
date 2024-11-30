@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import Tools from "../../data/tools";
+---
+
+<Layout title="Tools | Sigfried Seldeslachts">
+    <div class="component-wrapper">
+        <div class="title-section">
+          <h1 id="tools-title">Tools</h1>
+        </div>
+    
+        <div class="container mx-auto">
+          <div class="cards-list">
+            {Tools.map((tool) => (
+                <article v-for="tool in toolList">
+                    <div class="content">
+                        <h3>
+                        <a href={tool.route} class="mid-blue no-border">
+                            {tool.title}
+                        </a>
+                        </h3>
+                        <p>{tool.description}</p>
+            
+                        <div class="button-group">
+                        <span>
+                            <a href={tool.route} class="view-button">Explore</a>
+                        </span>
+                        </div>
+                    </div>
+                </article>
+            ))}
+          </div>
+        </div>
+      </div>
+</Layout>

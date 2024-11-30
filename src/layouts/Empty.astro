@@ -1,0 +1,29 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import '../styles/app.scss';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="An IT-Guy who is mostly working with networking solutions (BGP, VyOS, Proxmox, ...) but I also enjoy coding and learning new things." />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="/images/opengraph_img.jpeg">
+
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

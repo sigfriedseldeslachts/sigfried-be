@@ -1,16 +1,18 @@
-FROM node:16-alpine AS build
+FROM node:18-alpine AS build
 
-RUN mkdir -p /usr/src/nuxt-app
-WORKDIR /usr/src/nuxt-app
+WORKDIR /usr/src/app
+COPY . /usr/src/app/
 
-COPY . /usr/src/nuxt-app/
-
-RUN yarn && yarn generate
+RUN npm install && npm run build
 
 # Actual application
-FROM nginx:alpine
+FROM busybox:stable
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/src/nuxt-app/dist /var/www/http
+RUN adduser -D static
+USER static
+WORKDIR /home/static
+
+COPY --from=build /usr/src/app/dist /home/static
 
 EXPOSE 80
+CMD ["busybox", "httpd", "-f", "-v", "-p", "80"]

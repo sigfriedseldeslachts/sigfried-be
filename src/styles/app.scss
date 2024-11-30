@@ -1,0 +1,90 @@
+@use "node_modules/luminous-lightbox/dist/luminous-basic.css";
+@use "alerts";
+@use "cards";
+@use "forms";
+
+
+html {
+  @apply bg-gradient-to-br from-bg-light-blue via-bg-mid-blue to-bg-dark-blue overflow-x-hidden;
+}
+
+body {
+  @apply overflow-x-hidden;
+}
+
+a {
+  &:focus-visible {
+    @apply ring-4 ring-red-500 outline-none transition-all duration-200 ease-in-out;
+  }
+}
+
+.wrapper {
+  @apply flex flex-col min-h-screen;
+
+  main {
+    @apply flex-1 flex flex-col;
+
+    .component-wrapper {
+      @apply flex flex-col flex-1;
+
+      .title-section {
+        @apply container px-2 sm:mx-auto py-8 flex flex-col;
+
+        h1 {
+          @apply text-white text-4xl font-bold;
+        }
+
+        p {
+          @apply text-white text-lg;
+        }
+      }
+    }
+  }
+}
+
+.hero-canvas-wrapper {
+  @apply relative w-full h-screen;
+
+  canvas {
+    @apply absolute inset-0 z-0 bg-transparent w-full h-full;
+  }
+
+  .hero-canvas {
+    @apply relative bg-transparent z-10 flex flex-col h-full w-full;
+
+    main {
+      @apply container px-2 sm:mx-auto flex-1 flex flex-col justify-center;
+    }
+  }
+}
+
+a {
+  @apply text-accent-primary border-b transition-all duration-300 ease-in-out border-accent-primary;
+
+  &.mid-blue {
+    @apply text-bg-mid-blue border-bg-mid-blue;
+  }
+
+  &.no-border {
+    @apply border-none;
+  }
+
+  &:hover {
+    @apply border-opacity-0;
+  }
+}
+
+.view-button {
+  @apply px-3 py-2 rounded bg-accent-primary text-bg-light-blue transition-all ease-in-out duration-300 no-underline border-b-0;
+
+  &:hover, &:focus {
+    @apply text-white bg-bg-light-blue;
+  }
+}
+
+/**
+ * Lightbox fix
+ */
+.lum-img {
+  @apply mx-auto;
+}

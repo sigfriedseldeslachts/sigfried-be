@@ -1,0 +1,108 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import projects from "../../data/projects";
+---
+
+<Layout title="Projects | Sigfried Seldeslachts">
+  <div class="component-wrapper">
+    <div class="title-section">
+      <h1>Some projects</h1>
+      <p>These are some of my projects that I find interesting to share.</p>
+    </div>
+  
+    <div class="h-full">
+      <section class="container mx-auto">
+        <div class="cards-list">
+          {projects.map((project) => (
+            <article v-for="project in projects" aria-labelledby={ 'project-title-' + project.name } data-project>   
+              {
+                () => {
+                  if (!project.images || !project.images.length) {
+                    return (
+                      <div class="flex-1 flex items-center justify-center text-gray-500" v-else>
+                        <span class="py-4 px-2">No image available.</span>
+                      </div>
+                    );
+                  }
+
+                  const imageSrc = project.imgThumb ? project.imgThumb : project.images[project.mainImage].src
+                  const imageAlt = project.imgThumb ? project.name : project.images[project.mainImage].alt
+                  const imagePosition = project.imgThumb ? project.imgThumbPosition : 'center';
+
+                  if (project.imgThumb) {
+                    return (
+                      <a href={project.images[project.mainImage].src.src} data-lightbox data-lightbox-caption={ imageAlt }>
+                        <Image src={ imageSrc } alt={ imageAlt } style={ `object-position:${imagePosition}` } />
+                      </a>
+                    );
+                  }
+                }
+              }
+              {
+                project.images && project.images.length > 1 && project.images.slice(1).map((image) => (
+                  <a href={ image.src.src } aria-hidden="true" class="hidden" data-lightbox data-lightbox-caption={ image.alt }></a>
+                ))
+              }
+
+
+              <div class="content">
+                <h3 id="'project-title-' + project.name">{ project.name }</h3>
+                <p>{ project.description }</p>
+
+                <div class="button-group">
+                  { /* If there is a link, show the button */
+                    () => {
+                      if (project.url) {
+                        return (
+                          <span><a href={ project.url } rel="noreferrer noopener" class="view-button">View project</a></span>
+                        );
+                      }
+                    }
+                  }
+                </div>
+
+                { Array.isArray(project.tags) && project.tags.length > 0 && (
+                  <div class="tags-wrapper">
+                    <span class="sr-only">The following technologies were used:</span>
+                    { project.tags.map((tag) => (
+                      <span class="tag">{ tag }</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // @ts-ignore
+  import { Luminous, LuminousGallery } from 'luminous-lightbox';
+
+  const options = {
+    caption: function (src: Element) {
+      return src.getAttribute('data-lightbox-caption') || '';
+    }
+  }
+
+  window.addEventListener('load', function () {
+    var projects = document.querySelectorAll('[data-project]');
+
+    // Create a separate gallery for each project
+    projects.forEach((project) => {
+      const images = project.querySelectorAll('[data-lightbox]');
+    
+      if (images.length === 0) return;
+      if (images.length > 1) {
+        new LuminousGallery(images, null, options);
+      } else {
+        new Luminous(images[0], options);
+      }
+    });    
+  });
+</script>
