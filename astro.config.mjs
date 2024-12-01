@@ -11,5 +11,8 @@ export default defineConfig({
   integrations: [tailwind(), svelte({ extensions: ['.svelte'] }), sitemap()],
   redirects: {
     '/others/aircraft': '/projects/aircraft',
+  },
+  build: {
+    assetsPrefix: 'https://cdn.sigfried.be'
   }
 });
