@@ -1,0 +1,53 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Self-hosting | Sigfried Seldeslachts">
+  <div class="component-wrapper">
+    <div class="title-section">
+      <h1>Self-hosting services</h1>
+      <p>I like self-hosting my own services to have complete control over them, below you can find a list of services I self-host.</p>
+    </div>
+
+    <div class="container px-2 sm:mx-auto text-white">
+      <dl>
+        <dt>Nextcloud + Collabora</dt>
+        <dd>
+          <p>This is probably one of the first one I've been hosting. I'm using it for file storage, Obsidian notes, calendar, contacts.</p>
+        </dd>
+
+        <dt>Matrix</dt>
+        <dd>
+          <p>An decentralised encrypted chat platform, I mostly use it to contact some friends. For configuration I use <a href="https://github.com/spantaleev/matrix-docker-ansible-deploy" rel="noopener noreferrer">Matrix Ansible</a>.</p>
+        </dd>
+
+        <dt>DNS Nameservers</dt>
+        <dd>
+          <p>Some of my domains I own are served by my own DNS-system. There are currently three separate PowerDNS servers on my cloud servers serving about a dozen domains.</p>
+        </dd>
+
+        <dt>Mail server</dt>
+        <dd>
+          <p>I'm hosting my own mail server, currently it is using <a href="https://mailcow.email/" rel="noopener noreferrer">Mailcow</a>, I did previously use <a href="https://mailinabox.email/" rel="noopener noreferrer">Mail-in-a-box</a>.</p>
+        </dd>
+
+        <dt>Various others</dt>
+        <dd>
+          I have some others too (Minecraft, Home Assistant, Influx, Gitea) but they are not as interesting as the ones above.
+        </dd>
+      </dl>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  dl {
+    dt {
+      @apply text-lg font-bold;
+    }
+    
+    dd {
+      @apply text-gray-200 mb-4;
+    }
+  }
+</style>

@@ -31,6 +31,8 @@ import michiel_1 from './images/portfolio/boomverzorging_michiel.jpeg';
 import adsb_thumb from './images/portfolio/adsb/thumb.jpeg';
 import adsb_antenna from './images/portfolio/adsb/antenna.jpeg';
 import adsb_rpi from './images/portfolio/adsb/rpi.jpeg';
+import mezoa_1 from './images/portfolio/mezoa_1.jpeg';
+import mezoa_thumb from './images/portfolio/mezoa_thumb.jpeg';
 
 const projects: IProject[] = [
   {
@@ -81,8 +83,22 @@ const projects: IProject[] = [
     ],
   },
   {
+    name: 'Mezoa',
+    description: 'Created a website for a therapeutic center. Made using Nuxt with a custom lightweight backend.',
+    url: 'https://mezoa.be',
+    tags: ['Web', 'Vue', 'Nuxt'],
+    imgThumb: mezoa_thumb,
+    mainImage: 0,
+    images: [
+      {
+        src: mezoa_1,
+        alt: 'Screenshot of the contact webpage',
+      }
+    ],
+  },
+  {
     name: 'VandereL',
-    description: 'A website for an independant jeweler and leatherworker located in Belgium.',
+    description: 'A website for an independant jeweler and leatherworker.',
     url: 'https://vanderel.be',
     tags: ['Web', 'CMS'],
     imgThumb: vanderl_thumb,
@@ -90,20 +106,6 @@ const projects: IProject[] = [
     images: [
       {
         src: vanderl_1,
-        alt: 'Screenshot of the website',
-      },
-    ],
-  },
-  {
-    name: 'Echo Communication',
-    description: 'For a school project me and 3 other students were asked to create a website for a real company. Everyone had to make their own design, this was my result.',
-    url: 'https://echocommunication.sigfried.be',
-    tags: ['Web'],
-    imgThumb: echoComm_Thumb,
-    mainImage: 0,
-    images: [
-      {
-        src: echoComm_1,
         alt: 'Screenshot of the website',
       },
     ],
@@ -141,10 +143,31 @@ const projects: IProject[] = [
     ],
   },
   {
-    name: 'Mezoa',
-    description: 'Mezoa is a therapeutic center for people with therapy, speech therapy and counseling. The website is still under construction, but a few pages are already available.',
-    url: 'https://mezoa.be',
-    tags: ['Web', 'Vue', 'Nuxt'],
+    name: 'Self-hosted services',
+    description: 'At home I have a Proxmox server running, next to that I also have multiple cloud servers running various things.',
+    url: '/projects/self-hosting',
+    tags: ['Networking', 'Proxmox', 'Cloud'],
+    mainImage: 0,
+  },
+  {
+    name: 'School assignment website',
+    description: 'For a school project me and 3 other students were asked to create a static HTML website for a real company. Everyone had to make their own design, this was my result.',
+    url: 'https://echocommunication.sigfried.be',
+    tags: ['Web'],
+    imgThumb: echoComm_Thumb,
+    mainImage: 0,
+    images: [
+      {
+        src: echoComm_1,
+        alt: 'Screenshot of the website',
+      },
+    ],
+  },
+  {
+    name: 'Video learning platform',
+    description: 'I have been working on a video learning platform for a while now. I hope to release educational videos about technology and programming on this platform.',
+    url: null,
+    tags: ['Web', 'Supabase', 'SvelteKit'],
     mainImage: 0,
   },
   {
@@ -153,7 +176,7 @@ const projects: IProject[] = [
     url: 'https://as212767.net',
     tags: ['Networking', 'BGP'],
     mainImage: 0,
-  }
+  },
 ];
 
 export default projects;
