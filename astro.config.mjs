@@ -13,6 +13,7 @@ export default defineConfig({
     '/others/aircraft': '/projects/aircraft',
   },
   build: {
-    assetsPrefix: 'https://cdn.sigfried.be'
+    assetsPrefix: 'https://cdn.sigfried.be',
+    inlineStylesheets: 'always'
   }
 });
